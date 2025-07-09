@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.0
+
+- **Fork Release**: Published as `ensemble_date` - a maintained fork of `dart_date`
+- Updated package name from `dart_date` to `ensemble_date`
+- Updated repository links and documentation
+- Improved dependency constraints
+- Enhanced pub.dev compatibility
+
 ## 1.1.1
 
 - Merge [PR](https://github.com/xantiagoma/dart_date/pull/16) to fix week calculation

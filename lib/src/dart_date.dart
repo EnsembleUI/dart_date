@@ -559,7 +559,12 @@ extension Date on DateTime {
   static bool isDate(argument) => argument is DateTime;
 
   /// Check if a date is [equals] to other
-  bool isEqual(other) => equals(other);
+  bool isEqual(dynamic other) {
+    if (other is DateTime) {
+      return equals(other);
+    }
+    return false;
+  }
 
   /// Return true if this date day is monday
   bool get isMonday => weekday == DateTime.monday;
@@ -923,25 +928,25 @@ extension Date on DateTime {
   DateTime subDays(int amount) => addDays(-amount);
 
   /// Subtracts an amout of milliseconds from this [DateTime]
-  DateTime subMilliseconds(amount) => addMilliseconds(-amount);
+  DateTime subMilliseconds(int amount) => addMilliseconds(-amount);
 
   /// Subtracts an amout of microseconds from this [DateTime]
-  DateTime subMicroseconds(amount) => addMicroseconds(-amount);
+  DateTime subMicroseconds(int amount) => addMicroseconds(-amount);
 
   // DateTime subISOYears(amount)
   /// Subtracts an amout of minutes from this [DateTime]
-  DateTime subMinutes(amount) => addMinutes(-amount);
+  DateTime subMinutes(int amount) => addMinutes(-amount);
 
   /// Subtracts an amout of months from this [DateTime]
-  DateTime subMonths(amount) => addMonths(-amount);
+  DateTime subMonths(int amount) => addMonths(-amount);
 
   // DateTime subQuarters(amount)
   /// Subtracts an amout of seconds from this [DateTime]
-  DateTime subSeconds(amount) => addSeconds(-amount);
+  DateTime subSeconds(int amount) => addSeconds(-amount);
 
   // DateTime subWeeks(amount)
   /// Subtracts an amout of years from this [DateTime]
-  DateTime subYears(amount) => addYears(-amount);
+  DateTime subYears(int amount) => addYears(-amount);
 
   // Check if two dates are [equals]
   bool equals(DateTime other) => isAtSameMomentAs(other);

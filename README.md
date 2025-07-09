@@ -1,10 +1,27 @@
-# dart_date
+# ensemble_date
 
-Dart Extensions for `DartTime`
+Dart Extensions for `DateTime`
 
-dart_date provides the most comprehensive, yet simple and consistent toolset for manipulating Dart dates.
+ensemble_date provides the most comprehensive, yet simple and consistent toolset for manipulating Dart dates.
+
+**This package is a maintained fork of [dart_date](https://pub.dev/packages/dart_date), providing continued updates and improvements.**
 
 Inspired by [date-fns](https://date-fns.org/)
+
+## Installation
+
+Add this to your package's `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  ensemble_date: ^1.6.0
+```
+
+Then run:
+
+```bash
+dart pub get
+```
 
 ## Usage
 
@@ -27,6 +44,8 @@ Tomorrow: 2020-06-19 08:33:52.700579
 ```
 
 ```dart
+import 'package:ensemble_date/ensemble_date.dart';
+
   const pattern = '\'Heute ist\' dd-MMMM-yyyy';
   final n = DateTime.now();
   final de_String = DateTime.now().format(pattern, 'de_DE');
@@ -74,7 +93,7 @@ Tomorrow: 2020-06-19 08:33:52.700579
 
 ## API
 
-[Check full docs](https://pub.dev/documentation/dart_date/latest/)
+[Check full docs](https://pub.dev/documentation/ensemble_date/latest/)
 
 Date extension on DateTime
 
