@@ -167,6 +167,9 @@ extension Date on DateTime {
   /// Get [Date] object in LocalTime of current object.
   DateTime get toLocalTime => toLocal();
 
+  /// Creates a new [DateTime] instance with the same value as this one
+  ///
+  /// Returns an exact copy of this [DateTime] preserving the isUtc flag and all time components.
   DateTime get clone => DateTime.fromMicrosecondsSinceEpoch(
         microsecondsSinceEpoch,
         isUtc: isUtc,
@@ -948,7 +951,9 @@ extension Date on DateTime {
   /// Subtracts an amout of years from this [DateTime]
   DateTime subYears(int amount) => addYears(-amount);
 
-  // Check if two dates are [equals]
+  /// Check if two dates are equal to each other
+  ///
+  /// Returns true if this [DateTime] represents exactly the same moment in time as [other].
   bool equals(DateTime other) => isAtSameMomentAs(other);
 
   bool operator <(DateTime other) => isBefore(other);
@@ -1095,10 +1100,16 @@ extension Date on DateTime {
         isUtc: false,
       );
 
+  /// Subtract a [Duration] from this [DateTime]
+  ///
+  /// Returns a new [DateTime] representing the moment that is [other] duration before this [DateTime].
   DateTime operator -(Duration other) {
     return this.subtract(other);
   }
 
+  /// Add a [Duration] to this [DateTime]
+  ///
+  /// Returns a new [DateTime] representing the moment that is [other] duration after this [DateTime].
   DateTime operator +(Duration other) {
     return add(other);
   }

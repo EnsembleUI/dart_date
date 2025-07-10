@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.6.1
+
+- Add `equals` method to check if two dates are equal
+- Add `operator -` to subtract a duration from a date
+- Add `operator +` to add a duration to a date
+
+
 ## 1.6.0
 
 - **Fork Release**: Published as `ensemble_date` - a maintained fork of `dart_date`
