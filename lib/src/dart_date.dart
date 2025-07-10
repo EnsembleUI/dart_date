@@ -167,6 +167,9 @@ extension Date on DateTime {
   /// Get [Date] object in LocalTime of current object.
   DateTime get toLocalTime => toLocal();
 
+  /// Creates a new [DateTime] instance with the same value as this one
+  ///
+  /// Returns an exact copy of this [DateTime] preserving the isUtc flag and all time components.
   DateTime get clone => DateTime.fromMicrosecondsSinceEpoch(
         microsecondsSinceEpoch,
         isUtc: isUtc,
@@ -559,7 +562,12 @@ extension Date on DateTime {
   static bool isDate(argument) => argument is DateTime;
 
   /// Check if a date is [equals] to other
-  bool isEqual(other) => equals(other);
+  bool isEqual(dynamic other) {
+    if (other is DateTime) {
+      return equals(other);
+    }
+    return false;
+  }
 
   /// Return true if this date day is monday
   bool get isMonday => weekday == DateTime.monday;
@@ -923,27 +931,29 @@ extension Date on DateTime {
   DateTime subDays(int amount) => addDays(-amount);
 
   /// Subtracts an amout of milliseconds from this [DateTime]
-  DateTime subMilliseconds(amount) => addMilliseconds(-amount);
+  DateTime subMilliseconds(int amount) => addMilliseconds(-amount);
 
   /// Subtracts an amout of microseconds from this [DateTime]
-  DateTime subMicroseconds(amount) => addMicroseconds(-amount);
+  DateTime subMicroseconds(int amount) => addMicroseconds(-amount);
 
   // DateTime subISOYears(amount)
   /// Subtracts an amout of minutes from this [DateTime]
-  DateTime subMinutes(amount) => addMinutes(-amount);
+  DateTime subMinutes(int amount) => addMinutes(-amount);
 
   /// Subtracts an amout of months from this [DateTime]
-  DateTime subMonths(amount) => addMonths(-amount);
+  DateTime subMonths(int amount) => addMonths(-amount);
 
   // DateTime subQuarters(amount)
   /// Subtracts an amout of seconds from this [DateTime]
-  DateTime subSeconds(amount) => addSeconds(-amount);
+  DateTime subSeconds(int amount) => addSeconds(-amount);
 
   // DateTime subWeeks(amount)
   /// Subtracts an amout of years from this [DateTime]
-  DateTime subYears(amount) => addYears(-amount);
+  DateTime subYears(int amount) => addYears(-amount);
 
-  // Check if two dates are [equals]
+  /// Check if two dates are equal to each other
+  ///
+  /// Returns true if this [DateTime] represents exactly the same moment in time as [other].
   bool equals(DateTime other) => isAtSameMomentAs(other);
 
   bool operator <(DateTime other) => isBefore(other);
@@ -1090,10 +1100,16 @@ extension Date on DateTime {
         isUtc: false,
       );
 
+  /// Subtract a [Duration] from this [DateTime]
+  ///
+  /// Returns a new [DateTime] representing the moment that is [other] duration before this [DateTime].
   DateTime operator -(Duration other) {
     return this.subtract(other);
   }
 
+  /// Add a [Duration] to this [DateTime]
+  ///
+  /// Returns a new [DateTime] representing the moment that is [other] duration after this [DateTime].
   DateTime operator +(Duration other) {
     return add(other);
   }
